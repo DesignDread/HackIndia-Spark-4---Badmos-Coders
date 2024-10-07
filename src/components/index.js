@@ -7,6 +7,7 @@ import Info from "./Info";
 import Loader  from './Loader';
 import Rules from './Rules';
 import UserProfile from './UserProfile';
+import ContestList from './Contests';
 
 export {
   Navbar,
@@ -17,5 +18,6 @@ export {
   Info,
   Loader,
   Rules,
-  UserProfile
+  UserProfile,
+  ContestList
 };

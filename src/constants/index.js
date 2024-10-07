@@ -11,6 +11,13 @@
   import Roadmap4 from "../assets/Roadmap4.png";
   import rules from "../assets/rules.png";
   import Loader from "../assets/Loading.png"
+  import piratesBg from "../assets/piratesBg.jpg";
+  import Pirate1 from "../assets/Pirates1.png";
+  import Pirate2 from "../assets/Pirates2.png";
+  import Pirate3 from "../assets/Pirates3.png";
+  import Pirate4 from "../assets/Pirates4.png";
+  
+
   export const navLinks = [
     {
       id: "hero",
@@ -71,4 +78,4 @@
   
  
   
-  export  {   Background , Cup , StakeNSeek , roadmap ,float1 , float2 , float3 , float4 , rules ,Loader};
+  export  {   Background , Cup , StakeNSeek , roadmap ,float1 , float2 , float3 , float4 , rules ,Loader , piratesBg , Pirate1 , Pirate2 , Pirate3 , Pirate4 } ;

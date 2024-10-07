@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
 import GeolocationApproval from "./components/GeoLocation";
-import {  Contact, Roadmap, Navbar,  Footer ,  Info , Rules ,UserProfile} from "./components";
+import {  Contact, Roadmap, Navbar,  Footer ,  Info , Rules ,UserProfile, ContestList} from "./components";
 import { Loader } from './constants';
 import  { useState } from 'react';
 
@@ -53,6 +53,7 @@ return (
         <Rules/>
        {/* <GeolocationApproval/> */}
        <Footer /> 
+       <ContestList/>
         </div>
        
       </div>

@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
-
+import { Pirate1 , Pirate2 , Pirate4 } from '../constants';
 
 const CreateGame = () => {
   const { createGame, connectWallet, currentAccount } = useContext(ContractContext);
@@ -89,9 +89,16 @@ const CreateGame = () => {
     }));
   };
 
-  return (
-    <div className="p-6 max-w-3xl mx-auto2 shadow-md rounded-md space-y-6">
-      <h2 className="text-2xl font-semibold text-gray-800">Create a Treasure Hunt</h2>
+  return (<>
+  
+  <img src={`${Pirate1}`} alt="" className='absolute h-52 right-12 animate-moveUpDown fixed ' />
+  <img src={`${Pirate1}`} alt="" className='absolute h-52 left-12 animate-moveUpDown ' />
+  
+
+    <div
+    className="relative mt-36 p-6 m-auto max-w-3xl mx-auto shadow-md rounded-md space-y-6  bg-cover text-yellow-600">
+      
+      <h2 className="text-6xl font-extrabold relativefont-semibold text-yellow-600 z-10 ">Create a Treasure Hunt</h2>
 
       <div className="space-y-4">
         <div>
@@ -254,6 +261,8 @@ const CreateGame = () => {
         <Button className="w-full mt-6" onClick={handleCreateGame}  >Create Game</Button>
       </div>
     </div>
+
+    </>
   );
 };
 
