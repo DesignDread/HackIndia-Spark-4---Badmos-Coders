@@ -1,73 +1,69 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, useLocation } from 'react-router-dom';
-import ReactGA from 'react-ga4';
-import GeolocationApproval from "./components/GeoLocation";
-import {  Contact, Roadmap, Navbar,  Footer ,  Info , Rules ,UserProfile} from "./components";
-import { Loader } from './constants';
-import  { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { Routes, Route } from "react-router-dom";
+import WrappedApp from "./WrappedApp";
+import Navbar from "./components/Navbar";
+import CreateGame from "./pages/CreateGame";
+import AllGames from "./pages/AllGames";
+import PrivateRoute from "./pages/PrivateRoute"; // Import the PrivateRoute
+import { ContractContext } from "./context";
+import { useContext } from "react";
+import Login from "./components/usable/Login";
+
+import { initGA, logPageView } from "./analytics.js";
 
 
 const App = () => {
-  const location = useLocation();
+  const { currentAccount } = useContext(ContractContext);
 
-  useEffect(() => {
-    // Initialize GA4
-    ReactGA.initialize('G-P5V0RZMFD0'); 
-  }, []);
+  const logPageViewOnRender = () => {
+    logPageView();
+  };
 
-  useEffect(() => {
-    // Log page views on route change
-    ReactGA.send('pageview');
-  }, [location]);
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        {/* Public routes */}
+        <Route path="/" element={
 
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate a data fetch or image load
-    const timer = setTimeout(() => {
-      setLoading(false);  // Set loading to false after data is loaded
-    }, 2000); // 2 second delay for demo purposes
-
-    return () => clearTimeout(timer); // Cleanup on component unmount
-  }, []);
-
-
-return (
-  <div>
-    {loading ? (
-      // Loading spinner or text
-      <div className="flex flex-col justify-center items-center h-screen">
-        <img src={Loader} alt="Loading" className='h-96 animate-spin ' />
-      </div>
-    ) : (
-          <div className='bg-cover bg-no-repeat bg-center'>
-      <div className="relative z-0">
-        <div className=" bg-cover bg-no-repeat bg-center">
-          <Navbar />
+          <WrappedApp  logPageView={logPageViewOnRender}  />
           
-        </div>
-        <div className="relative z-0">
-        <Contact />
-        <Info/>
-        <Roadmap/>
-        <Rules/>
-       {/* <GeolocationApproval/> */}
-       <Footer /> 
-        </div>
-       
-      </div>
-      {/* <UserProfile/> */}
-    </div>
-    )}
-  </div>
-);
+          } />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/allgames" element={<AllGames />} />
+        
+        {/* Protected routes */}
+        <Route
+          path="/creategame"
+          element={
+            // <PrivateRoute>
+              <CreateGame />
+            // </PrivateRoute>
+          }
+        />
+        <Route
+          path="/livegame"
+          element={
+            // <PrivateRoute>
+              <h1>LiveGame</h1>
+            // </PrivateRoute>
+          }
+        />
+        <Route
+          path="/livecontext"
+          element={
+            // <PrivateRoute>
+              <h1>LiveContext</h1>
+            // </PrivateRoute>
+          }
+        />
+
+        {/* Fallback route */}
+        <Route path="*" element={<h1>404 - Page not found</h1>} />
+      </Routes>
+    </>
+  );
 };
 
-const WrappedApp = () => (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
-
-export default WrappedApp;
+export default App;
