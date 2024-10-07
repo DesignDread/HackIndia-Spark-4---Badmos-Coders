@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
 const GeolocationApproval = () => {
   const [hostCoords, setHostCoords] = useState({ lat: '', lng: '', range: '' });
   const [userCoords, setUserCoords] = useState(null);
   const [isApproved, setIsApproved] = useState(false);
   const [error, setError] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState(null); // for map selected coordinates
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
-  // Function to calculate distance between two points using Haversine formula
+  // Haversine formula to calculate distance
   const calculateDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = (value) => (value * Math.PI) / 180;
     const R = 6371; // Radius of the earth in km
@@ -19,11 +21,9 @@ const GeolocationApproval = () => {
       Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
       Math.sin(dLon / 2) * Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const distance = R * c; // Distance in km
-    return distance;
+    return R * c; // Distance in km
   };
 
-  // Function to fetch user's current coordinates
   const fetchUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -42,7 +42,6 @@ const GeolocationApproval = () => {
     }
   };
 
-  // Function to check if the user's location is within the host's range
   const checkApproval = () => {
     if (userCoords && hostCoords.lat && hostCoords.lng && hostCoords.range) {
       const distance = calculateDistance(
@@ -52,16 +51,10 @@ const GeolocationApproval = () => {
         userCoords.lng
       );
 
-      // If distance is less than or equal to host's defined range, approve
-      if (distance <= hostCoords.range) {
-        setIsApproved(true);
-      } else {
-        setIsApproved(false);
-      }
+      setIsApproved(distance <= hostCoords.range);
     }
   };
 
-  // Trigger the location fetch when the component mounts
   useEffect(() => {
     fetchUserLocation();
   }, []);
@@ -72,17 +65,16 @@ const GeolocationApproval = () => {
     }
   }, [userCoords, hostCoords]);
 
-  // Handle click on the map to set the selected coordinates
-  const handleMapClick = (event) => {
-    const lat = event.latLng.lat();
-    const lng = event.latLng.lng();
-    setHostCoords((prev) => ({ ...prev, lat, lng }));
-    setSelectedLocation({ lat, lng });
-  };
-
-  const containerStyle = {
-    width: '100%',
-    height: '400px',
+  const MapClickHandler = () => {
+    useMapEvents({
+      click(e) {
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+        setHostCoords((prev) => ({ ...prev, lat, lng }));
+        setSelectedLocation([lat, lng]);
+      },
+    });
+    return null;
   };
 
   return (
@@ -136,16 +128,15 @@ const GeolocationApproval = () => {
       </div>
 
       <div className="mt-4">
-        <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={selectedLocation || { lat: 0, lng: 0 }}
-            zoom={4}
-            onClick={handleMapClick}
-          >
-            {selectedLocation && <Marker position={selectedLocation} />}
-          </GoogleMap>
-        </LoadScript>
+        <MapContainer center={selectedLocation || [0, 0]} zoom={4} style={{ height: '400px', width: '100%' }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <MapClickHandler />
+          {selectedLocation && <Marker position={selectedLocation} icon={new L.Icon({ iconUrl: 'https://example.com/marker-icon.png' })} />}
+          {userCoords && <Marker position={[userCoords.lat, userCoords.lng]} />}
+        </MapContainer>
       </div>
     </div>
   );

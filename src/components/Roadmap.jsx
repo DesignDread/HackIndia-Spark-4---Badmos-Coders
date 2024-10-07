@@ -25,7 +25,7 @@ const RoadmapCard = ({ roadmapItem }) => {
       icon={
         <div className="flex justify-center items-center w-full h-full">
           <img
-            src="/path/to/icon.png" // Change this to a relevant icon if needed
+            src={roadmapItem.image} // Change this to a relevant icon if needed
             alt="roadmap stage"
             className="w-[60%] h-[60%] object-contain"
           />
@@ -59,7 +59,7 @@ const Experience = () => {
 
   return (
     <div>
-      <div className="h-[900px]"></div> {/* Spacing for scrolling effect */}
+      <div className=""></div> {/* Spacing for scrolling effect */}
 
       <motion.div variants={textVariant()}>
         <h2 className={`${styles.sectionHeadText} text-center`}>Road Map</h2>
@@ -67,46 +67,38 @@ const Experience = () => {
 
       {/* Floating Images with scroll animation */}
       <div
-        className={`absolute right-6 pt-28 pr-44 transition-all duration-700  ${
-          inView1 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-        }`}
+        className={`absolute right-6 pt-28 pr-44 transition-all duration-700  `}
         ref={ref1}
       >
         <img src={float1} alt="" className="h-60 animate-moveUpDown" />
       </div>
 
       <div
-        className={`absolute pt-96 pl-40 transition-all duration-700  ${
-          inView2 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-        }`}
+        className={`absolute pt-96 pl-40 transition-all duration-700 `}
         ref={ref2}
       >
         <img src={float3} alt="" className="h-60 animate-moveUpDown" />
       </div>
 
       <div
-        className={`absolute z-20 right-6 pt-[38rem] pr-44 transition-all duration-700  ${
-          inView3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-        }`}
+        className={`absolute z-20 right-6 pt-[38rem] pr-44 transition-all duration-700  `}
         ref={ref3}
       >
         <img src={float4} alt="" className="h-72 animate-moveUpDown" />
       </div>
 
       <div
-        className={`absolute pt-[55rem] pl-40 transition-all duration-1000  ${
-          inView4 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-        }`}
+        className={`absolute pt-[55rem] pl-40 transition-all duration-1000  `}
         ref={ref4}
       >
         <img src={float2} alt="" className="h-60 animate-moveUpDown" />
       </div>
 
       {/* Roadmap Timeline */}
-      <div className="mt-20 flex flex-col">
+      <div className="mt-20 flex flex-col ">
         <VerticalTimeline>
           {roadmap.map((roadmapItem, index) => (
-            <RoadmapCard key={`roadmap-${index}`} roadmapItem={roadmapItem} />
+            <RoadmapCard key={`roadmap-${index}`} roadmapItem={roadmapItem}  />
           ))}
         </VerticalTimeline>
       </div>

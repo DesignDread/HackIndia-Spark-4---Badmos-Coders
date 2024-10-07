@@ -1,6 +1,5 @@
 import React from "react";
-
-import { logo } from "../assets";
+import { StakeNSeek } from "../constants";
 import { styles } from "../styles";
 
 const Footer = () => {
@@ -10,13 +9,13 @@ const Footer = () => {
 
       <div className="flex  flex-col items-center">
 
-        <img src={logo} alt="logo" className="w-16  mb-5" />
+        <img src={StakeNSeek} alt="logo" className="w-16  mb-5" />
 
         <p className="text-secondary text-[17px] leading-[30px] text-center   left-0 right-0 cle">
-          2024 &copy; Soham. All rights reserved.
+          2024 &copy; Stake-N-Seek. All rights reserved.
         </p>
         <p className="text-secondary text-[17px] leading-[30px] text-center   left-0 right-0 cle">
-          sohamchakraborty18.edu@gmail.com
+          Fdelahoya106@gmail.com
         </p>
 
       </div>
@@ -32,7 +31,7 @@ const Footer = () => {
       border="0"
       />
     </a>
-    <p className={styles.sectionSubText}>Portfolio Visits</p>
+    <p className={styles.sectionSubText}>Pirates Visits</p>
 </div>
 
       </div>

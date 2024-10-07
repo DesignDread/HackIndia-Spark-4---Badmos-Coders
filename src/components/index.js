@@ -1,28 +1,19 @@
-import { EarthCanvas,StarsCanvas } from './canvas';
-import Hero from "./Hero";
+import { EarthCanvas } from './canvas';
 import Navbar from "./Navbar";
-import About from "./About";
-import Tech from "./Tech";
-import Experience from "./Experience";
-import Works from "./Works";
-import Feedbacks from "./Feedbacks";
-import Contact from "./Contact";
+import Roadmap from "./Roadmap";
+import Contact from "./Hero";
 import Footer from "./Footer";
-import Contest from "./Contest";
 import Info from "./Info";
+import Loader  from './Loader';
+import Rules from './Rules';
 
 export {
-  Hero,
   Navbar,
-  About,
-  Tech,
-  Experience,
-  Works,
-  Feedbacks,
+  Roadmap,
   Contact,
   Footer,
   EarthCanvas, 
-  StarsCanvas,
-  Contest,
-  Info
+  Info,
+  Loader,
+  Rules
 };

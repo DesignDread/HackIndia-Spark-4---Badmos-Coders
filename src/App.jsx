@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
 import GeolocationApproval from "./components/GeoLocation";
+import {  Contact, Roadmap, Navbar,  Footer ,  Info , Rules} from "./components";
+import { Loader } from './constants';
+import  { useState } from 'react';
 
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas, Footer , Contest , Info } from "./components";
 
 const App = () => {
   const location = useLocation();
@@ -18,18 +20,41 @@ const App = () => {
     ReactGA.send('pageview');
   }, [location]);
 
-  return (
-    <div className='bg-cover bg-no-repeat bg-center'>
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a data fetch or image load
+    const timer = setTimeout(() => {
+      setLoading(false);  // Set loading to false after data is loaded
+    }, 2000); // 2 second delay for demo purposes
+
+    return () => clearTimeout(timer); // Cleanup on component unmount
+  }, []);
+
+
+return (
+  <div>
+    {loading ? (
+      // Loading spinner or text
+      <div className="flex flex-col justify-center items-center h-screen">
+        <img src={Loader} alt="Loading" className='h-96 animate-spin ' />
+      </div>
+    ) : (
+          <div className='bg-cover bg-no-repeat bg-center'>
       <div className="relative z-0">
         <div className=" bg-cover bg-no-repeat bg-center">
           <Navbar />
+          
         </div>
         <div className="relative z-0">
         <Contact />
         <Info/>
-        <Contest />
-        <Experience />
-       <GeolocationApproval/>
+        {/* <Contest /> */}
+        <Roadmap/>
+        <Rules/>
+       {/* <GeolocationApproval/> */}
+       <Footer /> 
         </div>
         {/* <div className="relative z-0">
           <Hero />
@@ -47,8 +72,10 @@ const App = () => {
         <Footer /> */}
       </div>
     </div>
-  );
-}
+    )}
+  </div>
+);
+};
 
 const WrappedApp = () => (
   <BrowserRouter>
