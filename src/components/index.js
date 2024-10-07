@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Info from "./Info";
 import Loader  from './Loader';
 import Rules from './Rules';
+import UserProfile from './UserProfile';
 
 export {
   Navbar,
@@ -15,5 +16,6 @@ export {
   EarthCanvas, 
   Info,
   Loader,
-  Rules
+  Rules,
+  UserProfile
 };

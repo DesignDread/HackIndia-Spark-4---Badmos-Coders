@@ -13,16 +13,21 @@
   import Loader from "../assets/Loading.png"
   export const navLinks = [
     {
-      id: "work",
-      title: "Contest",
+      id: "hero",
+      title: "Camp",
+    },
+  
+    {
+      id: "About",
+      title: "Expedition",
     },
     {
       id: "work",
-      title: "Work",
+      title: "Roadmap",
     },
     {
-      id: "contact",
-      title: "Contact",
+      id: "rules",
+      title: "Rules",
     },
   ];
   

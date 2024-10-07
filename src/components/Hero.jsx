@@ -22,7 +22,7 @@ const Contact = () => {
 
 return (
   <div
-
+      id="hero"
       className={`xl:mt-0 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
     >
       {/* <Hero/> */}

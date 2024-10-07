@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
 import GeolocationApproval from "./components/GeoLocation";
-import {  Contact, Roadmap, Navbar,  Footer ,  Info , Rules} from "./components";
+import {  Contact, Roadmap, Navbar,  Footer ,  Info , Rules ,UserProfile} from "./components";
 import { Loader } from './constants';
 import  { useState } from 'react';
 
@@ -50,27 +50,14 @@ return (
         <div className="relative z-0">
         <Contact />
         <Info/>
-        {/* <Contest /> */}
         <Roadmap/>
         <Rules/>
        {/* <GeolocationApproval/> */}
        <Footer /> 
         </div>
-        {/* <div className="relative z-0">
-          <Hero />
-          <StarsCanvas />
-        </div>
-        <About />
-        <Experience />
-        <Tech />
-        <Works />
-        <Feedbacks />
-        <div className='relative z-0'>
-          <Contact />
-          <StarsCanvas />
-        </div>
-        <Footer /> */}
+       
       </div>
+      {/* <UserProfile/> */}
     </div>
     )}
   </div>

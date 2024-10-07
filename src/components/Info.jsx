@@ -3,7 +3,7 @@ import { Cup } from '../constants'
 
 function Info() {
   return (
-    <div className='flex w-[85%] m-auto  gap-4'>
+    <div className='flex w-[85%] m-auto  gap-4' id='About'>
       <img src={Cup} alt="" className='h-[29rem] m-9 animate-moveUpDown ' />
       <div className='flex flex-col gap-9'>
         <h1 className='font-bold text-7xl pt-12'>Our Expedition</h1>
