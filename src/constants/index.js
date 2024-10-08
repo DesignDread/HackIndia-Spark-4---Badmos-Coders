@@ -16,26 +16,28 @@
   import Pirate2 from "../assets/Pirates2.png";
   import Pirate3 from "../assets/Pirates3.png";
   import Pirate4 from "../assets/Pirates4.png";
-  
+  import { CreateGame , ContestList } from "../components";
 
   export const navLinks = [
-    {
-      id: "hero",
-      title: "Camp",
-    },
+    // {
+    //   id: "hero",
+    //   title: "Camp",
+    // },
   
-    {
-      id: "About",
-      title: "Expedition",
-    },
-    {
-      id: "work",
-      title: "Roadmap",
-    },
-    {
-      id: "rules",
-      title: "Rules",
-    },
+    // {
+    //   id: "About",
+    //   title: "Expedition",
+    // },
+    // {
+    //   id: "work",
+    //   title: "Roadmap",
+    // },
+    // {
+    //   id: "rules",
+    //   title: "Rules",
+    // },
+
+
   ];
   
   

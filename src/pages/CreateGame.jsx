@@ -91,7 +91,7 @@ const CreateGame = () => {
 
   return (<>
   
-  <img src={`${Pirate1}`} alt="" className='absolute h-52 right-12 animate-moveUpDown fixed ' />
+  <img src={`${Pirate1}`} alt="" className='absolute h-52 right-12 animate-moveUpDown  ' />
   <img src={`${Pirate1}`} alt="" className='absolute h-52 left-12 animate-moveUpDown ' />
   
 

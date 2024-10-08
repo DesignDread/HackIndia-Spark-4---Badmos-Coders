@@ -8,6 +8,8 @@ import Loader  from './Loader';
 import Rules from './Rules';
 import UserProfile from './UserProfile';
 import ContestList from './Contests';
+import CreateGame from '../pages/CreateGame';
+
 
 export {
   Navbar,
@@ -19,5 +21,6 @@ export {
   Loader,
   Rules,
   UserProfile,
-  ContestList
+  ContestList,
+  CreateGame
 };

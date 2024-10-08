@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { StakeNSeek } from "../constants";
 import { styles } from "../styles";
-import { navLinks } from "../constants";
 import { menu, close } from "../assets";
 import logo from "../assets/logo.svg";
 
@@ -14,15 +13,10 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(scrollTop > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -44,21 +38,25 @@ const Navbar = () => {
           }}
         >
           <img src={StakeNSeek} alt='logo' className='w-20 object-contain' />
-        
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
-            >
-              <a href={`#${nav.id}`}>{nav.title}</a>
-            </li>
-          ))}
+          <li
+            className={`${
+              active === "Create Game" ? "text-white" : "text-secondary"
+            } hover:text-white text-[18px] font-medium cursor-pointer`}
+            onClick={() => setActive("Create Game")}
+          >
+            <Link to="/creategame">Create Game</Link>
+          </li>
+          <li
+            className={`${
+              active === "All Games" ? "text-white" : "text-secondary"
+            } hover:text-white text-[18px] font-medium cursor-pointer`}
+            onClick={() => setActive("All Games")}
+          >
+            <Link to="/allgames">All Games</Link>
+          </li>
         </ul>
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
@@ -75,20 +73,28 @@ const Navbar = () => {
             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
-                >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
-                </li>
-              ))}
+              <li
+                className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                  active === "Create Game" ? "text-white" : "text-secondary"
+                }`}
+                onClick={() => {
+                  setToggle(!toggle);
+                  setActive("Create Game");
+                }}
+              >
+                <Link to="/creategame">Create Game</Link>
+              </li>
+              <li
+                className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                  active === "All Games" ? "text-white" : "text-secondary"
+                }`}
+                onClick={() => {
+                  setToggle(!toggle);
+                  setActive("All Games");
+                }}
+              >
+                <Link to="/allgames">All Games</Link>
+              </li>
             </ul>
           </div>
         </div>
