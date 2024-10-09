@@ -53,7 +53,8 @@ return (
         <Rules/>
        {/* <GeolocationApproval/> */}
        <Footer /> 
-       <ContestList/>
+       {/* <ContestList/> */}
+
         </div>
        
       </div>

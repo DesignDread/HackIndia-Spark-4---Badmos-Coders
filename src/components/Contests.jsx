@@ -1,4 +1,5 @@
 import React from "react";
+// import {Shimla , Mansa , Kurukshetra , Chitkara} from "../constants/index"
 
 const ContestCard = ({ title, venue, imgSrc, description }) => {
   return (
@@ -27,25 +28,25 @@ const ContestList = () => {
     {
       title: "Treasure Hunt - Chitkara Adventure",
       venue: "Chitkara University",
-      imgSrc: "https://via.placeholder.com/400x300",
+      // imgSrc: `${Chitkara}`,
       description: "Join the treasure hunt at Chitkara University and solve exciting challenges!",
     },
     {
       title: "Treasure Hunt - Mansa Expedition",
       venue: "Mansa",
-      imgSrc: "https://via.placeholder.com/400x300",
+      // imgSrc: `${Mansa}`,
       description: "Explore Mansa in search of hidden treasures and tackle mind-bending puzzles!",
     },
     {
       title: "Treasure Hunt - Shimla Mountain Quest",
       venue: "Shimla",
-      imgSrc: "https://via.placeholder.com/400x300",
+      // imgSrc: `${Shimla}`,
       description: "Uncover the mysteries of Shimla with this adventurous treasure hunt.",
     },
     {
       title: "Treasure Hunt - Kurukshetra Legends",
       venue: "Kurukshetra",
-      imgSrc: "https://via.placeholder.com/400x300",
+      // imgSrc: `${Kurukshetra}`,
       description: "Discover Kurukshetra's hidden history through a thrilling treasure hunt.",
     },
   ];

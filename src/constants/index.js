@@ -16,6 +16,10 @@
   import Pirate2 from "../assets/Pirates2.png";
   import Pirate3 from "../assets/Pirates3.png";
   import Pirate4 from "../assets/Pirates4.png";
+  // import Shimla from "../assets/Shimla.avif"
+  // import Kurukshetra from " ../assets/Kurukshetra.jpg"
+  // import Mansa from " ../assets/Mansa.jpg"
+  // import Chitkara from " ../assets/Chitkara.jpg"
   import { CreateGame , ContestList } from "../components";
 
   export const navLinks = [
